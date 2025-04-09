@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
 const quizSchema = new mongoose.Schema({
-    title:String,
+    title:{type:String,required:true},
     duration:Number,
     description:String,
-    questions:[{type:mongoose.Schema.Types.ObjectId,ref:"Question"}]
+    questions:[{type:mongoose.Schema.Types.ObjectId,ref:"Question"}],
+    createdBy:{type:mongoose.Schema.Types.ObjectId,ref:"User"}
 },
 {
     timestamps:true

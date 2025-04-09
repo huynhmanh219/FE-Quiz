@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/db";
-import { Quiz } from "@/models/Quiz";
+import { Quiz } from "@/models/quiz";
 import { NextRequest, NextResponse } from "next/server";
 
 
