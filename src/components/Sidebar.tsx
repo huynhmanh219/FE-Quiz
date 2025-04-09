@@ -1,4 +1,5 @@
 import { BookCheck, BarChart3 } from "lucide-react";
+import Link from "next/link";
 
 export const Sidebar = () => {
   return (
@@ -6,9 +7,9 @@ export const Sidebar = () => {
       <div className="text-lg font-semibold mb-6">Bảng điều khiển</div>
       <ul className="space-y-2">
         <li>
-          <a href="#" className="flex items-center gap-2 hover:text-blue-400">
+          <Link href="/quiz" className="flex items-center gap-2 hover:text-blue-400">
             <BookCheck size={18} /> Danh sách đề thi
-          </a>
+          </Link>
         </li>
         <li>
           <a href="#" className="flex items-center gap-2 hover:text-blue-400">

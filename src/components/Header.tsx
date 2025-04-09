@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // src/components/Header.tsx
 export const Header = () => {
     return (
@@ -5,9 +7,9 @@ export const Header = () => {
         <div className="text-xl font-bold text-blue-400">Quiz Master</div>
         <nav className="space-x-6 text-xl text-white">
           <a href="#" className="hover:text-blue-500">Trang chủ</a>
-          <a href="#" className="hover:text-blue-500">Đề thi</a>
+          <Link href="" className="hover:text-blue-500">Đề thi</Link>
           <a href="#" className="hover:text-blue-500">Hướng dẫn</a>
-          <a href="#" className="hover:text-blue-500">Đăng nhập</a>
+          <Link href="/login" className="hover:text-blue-500">Đăng nhập</Link>
         </nav>
       </header>
     );

@@ -41,41 +41,45 @@ export default function QuizListPage(){
           setQuizzes(data)
     },[])
     return(
-        <main className="p-6 space-y-6">
+        <main className="p-3 space-y-5">
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold">Danh sách đề thi</h1>
                 <Link href="/quiz/create">
                     <Button>
-                        <Plus className="w-4 h-4 mr-2"></Plus>
+                        <Plus className="w-4 h-4 mr-2" />
                         Tạo đề thi mới
                     </Button>
                 </Link>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {quizzes.map((quiz)=>(
-                    <Card key={quiz.id}>
-                        <CardHeader>
-                            <CardTitle className="text-lg">{quiz.title}</CardTitle>
+                {quizzes.map((quiz) => (
+                    <Card key={quiz.id} className="w-full flex max-w-[420px] mx-auto shadow-sm">
+                        <CardHeader className="p-4 pb-2">
+                            <CardTitle className="text-lg line-clamp-1 ">{quiz.title}</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-2">
-                            <p className="text-muted-foreground text-sm">{quiz.description}</p>
-                            <div className="text-sm">⏱ Thời gian: {quiz.duration} phút</div>
-                            <div className="text-sm">❓ Số câu hỏi: {quiz.questionsCount}</div>
-                            <div className="flex gap-2 pt-2">
+                        <CardContent className="p-4 pt-0 space-y-1.5 ">
+                            <div className="flex flex-col flex justify-baseline items-start flex-wrap  gap-1 text-lg">
+                                <p className="text-muted-foreground text-sm line-clamp-2">{quiz.description}</p>
+                                <span>⏱ Thời gian: {quiz.duration} phút</span>
+                                <span>❓ Số câu hỏi: {quiz.questionsCount}</span>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2 pt-3">
                                 <Link href={`/quiz/${quiz.id}`}>
-                                    <Button variant="outline" size="sm">Xem</Button>
+                                    <Button variant="outline" size="sm" className="text-xs h-8">Xem</Button>
                                 </Link>
                                 <Link href={`/quiz/edit/${quiz.id}`}>
-                                    <Button variant="outline" size="sm">Sửa</Button>
+                                    <Button variant="outline" size="sm" className="text-xs h-8">Sửa</Button>
                                 </Link>
-                                <Button variant="destructive" size="sm">Xoá</Button>
+                                <Link href={`quiz/${quiz.id}/take`}>
+                                    <Button variant="default" size="sm" className="text-xs h-8">Làm bài thi</Button>
+                                </Link>
+                                <Button variant="destructive" size="sm" className="text-xs h-8">Xóa</Button>
                             </div>
                         </CardContent>
                     </Card>
                 ))}
             </div>
-
-
         </main>
     )
 }
