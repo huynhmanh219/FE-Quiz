@@ -1,15 +1,14 @@
 import mongoose, { models, Schema } from "mongoose";
 
+const optionSchema = new Schema({
+    label: String,
+    value: String,
+    isCorrect: Boolean,
+  })
 
 const questionSchema = new mongoose.Schema({
     content: {type:String,required:true},
-    Option: [
-        {
-            label:String,
-            value:String,
-            isCorrect:Boolean
-        }
-    ],
+    Option: [optionSchema],
     type:{type:String,enum:["single","multiple"],default:"single"},
     level:{type:String,enum:["easy","medium","hard"],default:"medium"},
     tags:[String],

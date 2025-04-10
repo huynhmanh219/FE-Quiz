@@ -2,8 +2,8 @@ import { connectDB } from "@/lib/db"
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
 import { generateAccessToken, generateRefreshToken } from "@/utils/jwt";
+import { JwtUserPayload } from "@/types/jwt";
 
 
 
@@ -17,7 +17,7 @@ export async function POST(req:Request){
     const isMath = await bcrypt.compare(password,user.password)
     if(!isMath) return NextResponse.json({error:"Mật khẩu không đúng"},{status:403})
     
-    const payload = {userId:user._id,role:user.role}
+    const payload:JwtUserPayload = {_id:user._id,role:user.role}
     
     const accessToken = generateAccessToken(payload);
     
@@ -28,6 +28,7 @@ export async function POST(req:Request){
     user.refreshToken = refreshToken
     await user.save();
 
+    
     response.cookies.set("accessToken",accessToken,{
         httpOnly:true,
         maxAge:15*60,

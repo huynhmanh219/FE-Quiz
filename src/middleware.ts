@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
-
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET as string
 
 
@@ -26,10 +25,11 @@ export function middleware(req:NextRequest){
     }
 }
 
+
 export const config = {
     matcher:[
         "/quiz/create",
-        "/dashboard/:path*",
+        "/api/:path*",
         "/admin/:path*"
     ]
 }
